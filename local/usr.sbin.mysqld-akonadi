@@ -1,0 +1,2 @@
+# Site-specific additions and overrides for usr.sbin.mysqld-akonadi.
+# For more details, please see /etc/apparmor.d/local/README.

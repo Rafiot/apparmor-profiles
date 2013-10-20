@@ -1,0 +1,50 @@
+# Last Modified: Thu Oct 17 23:33:57 2013
+#include <tunables/global>
+
+/usr/bin/psi-plus {
+  #include <abstractions/base>
+  #include <abstractions/dbus-session>
+  #include <abstractions/enchant>
+  #include <abstractions/fonts>
+  #include <abstractions/gnome>
+  #include <abstractions/ibus>
+  #include <abstractions/kde>
+  #include <abstractions/nameservice>
+  #include <abstractions/private-files-strict>
+  #include <abstractions/user-tmp>
+
+  network inet stream,
+  network inet6 stream,
+
+  deny /etc/xdg/Trolltech.conf rk,
+  deny @{HOME}/ r,
+  deny @{HOME}/.config/autostart/psi-plus.desktop r,
+  deny /usr/bin/kfmclient x,
+  deny /usr/bin/python3.3 r,
+  deny /usr/bin/xdg-open x,
+  deny /usr/lib/firefox/firefox.sh x,
+  deny @{HOME}/.kde/tmp-*/xauth-* r,
+
+  /etc/lsb-release r,
+  /etc/xdg/sni-qt.conf rk,
+  /home/*/.local/share/psi\+/ r,
+  /usr/bin/lsb_release rPx,
+  /usr/bin/psi-plus r,
+  /usr/share/javascript/mathjax/fonts/HTML-CSS/TeX/otf/ r,
+  /usr/share/kde4/config/kdebug.areas r,
+  /usr/share/kde4/config/kdebugrc r,
+  /usr/share/kubuntu-default-settings/kde4-profile/default/share/config/* r,
+  /usr/share/psi-plus/ r,
+  /usr/share/psi-plus/** r,
+  owner @{HOME}/.cache/psi\+/** rw,
+  @{HOME}/.config/fontconfig/fonts.conf r,
+  owner @{HOME}/.config/psi\+/** rw,
+  owner @{HOME}/.config/psi\+/psirc rwk,
+  owner @{HOME}/.kde/cache-*/icon-cache.kcache r,
+  owner @{HOME}/.kde/share/config/kdebugrc r,
+  owner @{HOME}/.kde/share/config/kdeglobals k,
+  owner @{HOME}/.local/share/psi\+/** rw,
+  @{PROC}/[0-9]*/net/if_inet6 r,
+  @{PROC}/[0-9]*/net/ipv6_route r,
+
+}

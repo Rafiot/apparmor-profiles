@@ -1,0 +1,41 @@
+# Author: Kees Cook <kees@ubuntu.com>
+
+#include <tunables/global>
+/usr/sbin/dovecot flags=(complain) {
+  #include <abstractions/authentication>
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/ssl_certs>
+  #include <abstractions/ssl_keys>
+
+  capability chown,
+  capability net_bind_service,
+  capability setgid,
+  capability setuid,
+  capability sys_chroot,
+  capability fsetid,
+
+  /etc/dovecot/** r,
+  /etc/mtab r,
+  /etc/lsb-release r,
+  /etc/SuSE-release r,
+  @{PROC}/[0-9]*/mounts r,
+  /usr/lib/dovecot/dovecot-auth Pxmr,
+  /usr/lib/dovecot/imap Pxmr,
+  /usr/lib/dovecot/imap-login Pxmr,
+  /usr/lib/dovecot/pop3 Px,
+  /usr/lib/dovecot/pop3-login Pxmr,
+  # temporarily commented out while testing
+  #/usr/lib/dovecot/managesieve Px,
+  /usr/lib/dovecot/managesieve-login Pxmr,
+  /usr/lib/dovecot/ssl-build-param ixr,
+  /usr/sbin/dovecot mr,
+  /var/lib/dovecot/ w,
+  /var/lib/dovecot/* krw,
+  /{,var/}run/dovecot/ rw,
+  /{,var/}run/dovecot/** rw,
+  link /{,var/}run/dovecot/** -> /var/lib/dovecot/**,
+
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/usr.sbin.dovecot>
+}

@@ -1,0 +1,19 @@
+# vim:syntax=apparmor
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2009-2010 Canonical Ltd.
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+
+  /etc/samba/* r,
+  /usr/share/samba/*.dat r,
+  /var/lib/samba/**.tdb rwk,
+  /var/log/samba/cores/ rw,
+  /var/log/samba/cores/** rw,
+  /var/log/samba/log.* w,
+  /{,var/}run/samba/*.tdb rw,
+

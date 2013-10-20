@@ -1,0 +1,12 @@
+# vim:syntax=apparmor
+# Profile for restricting lightdm guest session
+
+#include <tunables/global>
+
+/usr/lib/lightdm/lightdm/lightdm-guest-session-wrapper flags=(complain) {
+  # Most applications are confined via the main abstraction
+  #include <abstractions/lightdm>
+
+  # chromium-browser needs special confinement due to its sandboxing
+  #include <abstractions/lightdm_chromium-browser>
+}

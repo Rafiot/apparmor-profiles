@@ -1,0 +1,14 @@
+# Last Modified: Sun Oct 13 23:52:23 2013
+#include <tunables/global>
+
+/usr/bin/kde4-config {
+  #include <abstractions/base>
+  #include <abstractions/kde>
+
+
+  /usr/bin/kde4-config mr,
+  /usr/lib/x86_64-linux-gnu/gconv/UTF-*.so mr,
+  /usr/share/kubuntu-default-settings/kde4-profile/** r,
+  @{HOME}/.kde/share/config/* r,
+
+}

@@ -1,0 +1,22 @@
+# Author: Kees Cook <kees@ubuntu.com>
+
+#include <tunables/global>
+/usr/lib/dovecot/pop3 flags=(complain) {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability setgid,
+  capability setuid,
+
+  /var/mail/* klrw,
+  /var/spool/mail/* klrw,
+  @{HOME} r,
+  @{HOME}/mail/* klrw,
+  @{HOME}/mail/.imap/** klrw,
+  @{HOME}/Maildir/ rw,
+  @{HOME}/Maildir/** klrw,
+  /usr/lib/dovecot/pop3 mr,
+
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/usr.lib.dovecot.pop3>
+}

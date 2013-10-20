@@ -1,0 +1,10 @@
+# vim:syntax=apparmor
+# gnupg sub-process running permissions
+
+  # user configurations
+  @{HOME}/.gnupg/options r,
+  @{HOME}/.gnupg/pubring.gpg r,
+  @{HOME}/.gnupg/random_seed rw,
+  @{HOME}/.gnupg/secring.gpg r,
+  @{HOME}/.gnupg/so/*.x86_64 mr,
+  @{HOME}/.gnupg/trustdb.gpg rw,

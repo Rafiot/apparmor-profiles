@@ -1,0 +1,34 @@
+# Last Modified: Sat Oct 19 16:42:30 2013
+#include <tunables/global>
+
+/usr/bin/wine-preloader {
+  #include <abstractions/base>
+  #include <abstractions/fonts>
+  #include <abstractions/lightdm>
+  #include <abstractions/nameservice>
+  #include <abstractions/p11-kit>
+  #include <abstractions/private-files-strict>
+
+
+  deny /tmp/kde-*/xauth-* r,
+
+  /home/*/.cache/fontconfig/* w,
+  /usr/bin/ntlm_auth Cx,
+  @{HOME}/.cache/fontconfig/* r,
+  @{HOME}/.config/fontconfig/fonts.conf r,
+  @{HOME}/.wine/** mrw,
+  @{PROC}/cpuinfo r,
+
+
+  profile /usr/bin/ntlm_auth {
+    #include <abstractions/base>
+    #include <abstractions/private-files-strict>
+
+
+    deny /usr/share/samba/lowcase.dat r,
+    deny /usr/share/samba/upcase.dat r,
+
+    /usr/bin/ntlm_auth mr,
+
+  }
+}

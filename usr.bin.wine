@@ -1,0 +1,110 @@
+# Last Modified: Sat Oct 19 16:42:29 2013
+#include <tunables/global>
+
+/usr/bin/wine {
+  #include <abstractions/X>
+  #include <abstractions/audio>
+  #include <abstractions/base>
+  #include <abstractions/fonts>
+  #include <abstractions/freedesktop.org>
+  #include <abstractions/nameservice>
+  #include <abstractions/p11-kit>
+  #include <abstractions/private-files-strict>
+  #include <abstractions/user-tmp>
+
+  capability sys_ptrace,
+
+
+  deny / r,
+  deny /tmp/kde-*/xauth-* r,
+  deny /usr/share/samba/lowcase.dat r,
+  deny /usr/share/samba/upcase.dat r,
+  deny /var/lib/dbus/machine-id r,
+
+  /usr/bin/ntlm_auth rCx,
+  /usr/bin/wine mr,
+  /usr/bin/wine-preloader Cx,
+  /usr/bin/wineserver rCx,
+  /usr/lib/i386-linux-gnu/pkcs11/gnome-keyring-pkcs*.so mr,
+  /usr/lib/i386-linux-gnu/wine/* mr,
+  /usr/share/javascript/mathjax/fonts/** r,
+  /usr/share/poppler/cMap/*/ r,
+  /usr/share/wine/** r,
+  owner /{run,dev}/shm/pulse-shm* k,
+  /{run,dev}/shm/pulse-shm* rw,
+  @{HOME}/.cache/fontconfig/* r,
+  @{HOME}/.config/fontconfig/fonts.conf r,
+  @{HOME}/.config/pulse/cookie rk,
+  @{HOME}/.wine/** mrwk,
+  owner @{PROC}/[0-9]*/mem r,
+  @{PROC}/cpuinfo r,
+  @{PROC}/meminfo r,
+  @{PROC}/scsi/scsi r,
+
+
+  profile /usr/bin/ntlm_auth {
+    #include <abstractions/base>
+
+
+    deny /usr/share/samba/* r,
+
+    /usr/bin/ntlm_auth mr,
+
+  }
+
+  profile /usr/bin/wine-preloader {
+    #include <abstractions/X>
+    #include <abstractions/audio>
+    #include <abstractions/base>
+    #include <abstractions/fonts>
+    #include <abstractions/freedesktop.org>
+    #include <abstractions/lightdm>
+    #include <abstractions/nameservice>
+    #include <abstractions/p11-kit>
+    #include <abstractions/private-files-strict>
+
+
+    deny / r,
+    deny /etc/fstab r,
+    deny /tmp/kde-*/xauth-* r,
+    deny /var/lib/dbus/machine-id r,
+
+    /home/*/.cache/fontconfig/* w,
+    /usr/bin/ntlm_auth rPx,
+    /usr/bin/wine-preloader mrPx,
+    /usr/bin/wine64-preloader Px,
+    /usr/bin/wineserver Px,
+    owner /{run,dev}/shm/pulse-shm* k,
+    /{run,dev}/shm/pulse-shm* rw,
+    @{HOME}/.cache/fontconfig/* r,
+    @{HOME}/.config/fontconfig/fonts.conf r,
+    @{HOME}/.config/pulse/cookie rk,
+    @{HOME}/.wine/* mrw,
+    @{HOME}/.wine/** mr,
+    @{HOME}/.wine/drive_c/** mrw,
+    @{PROC}/cpuinfo r,
+    @{PROC}/meminfo r,
+    @{PROC}/scsi/scsi r,
+
+  }
+
+  profile /usr/bin/wineserver {
+    #include <abstractions/base>
+    #include <abstractions/nameservice>
+    #include <abstractions/private-files-strict>
+    #include <abstractions/user-tmp>
+
+    capability sys_ptrace,
+
+
+    deny / r,
+
+    /usr/bin/wineserver mr,
+    @{HOME}/.local/share/icons/hicolor/** w,
+    @{HOME}/.wine/* mrw,
+    @{HOME}/.wine/drive_c/** r,
+    @{HOME}/.wine/drive_c/users/** rwk,
+    owner @{PROC}/[0-9]*/mem r,
+
+  }
+}

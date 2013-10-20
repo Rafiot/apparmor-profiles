@@ -1,0 +1,53 @@
+# Last Modified: Wed Oct 16 14:48:02 2013
+#include <tunables/global>
+
+/opt/spotify/spotify-client/spotify {
+  #include <abstractions/audio>
+  #include <abstractions/base>
+  #include <abstractions/fonts>
+  #include <abstractions/lightdm>
+  #include <abstractions/nameservice>
+
+
+  deny @{HOME}/.kde/tmp-*/xauth-* r,
+  deny @{HOME}/Music/** r,
+  deny /run/shm/org.chromium.Chromium.* rwk,
+
+  /bin/dash rCx,
+  @{HOME}/.ICEauthority r,
+  @{HOME}/.cache/fontconfig/* r,
+  @{HOME}/.cache/spotify/ r,
+  @{HOME}/.cache/spotify/** rwk,
+  @{HOME}/.config/Trolltech.conf r,
+  @{HOME}/.config/oxygen-gtk/argb-apps.conf r,
+  @{HOME}/.config/pulse/cookie r,
+  @{HOME}/.config/spotify/** rwk,
+  @{HOME}/.config/user-dirs.dirs r,
+  @{HOME}/.fonts.conf r,
+  @{HOME}/.gtkrc-2.0 r,
+  @{HOME}/.kde/cache-*/icon-cache.kcache r,
+  @{HOME}/.local/share/mime/mime.cache r,
+  @{PROC}/[0-9]*/auxv r,
+  @{PROC}/[0-9]*/cmdline r,
+  /usr/bin/kde4-config Cx,
+  owner /{run,dev}/shm/pulse-shm* k,
+  /{run,dev}/shm/pulse-shm* rw,
+
+
+  profile /bin/dash {
+    #include <abstractions/base>
+
+
+    /bin/dash mr,
+    /usr/bin/kde4-config Px,
+
+  }
+
+  profile /usr/bin/kde4-config {
+    #include <abstractions/base>
+
+
+    /usr/bin/kde4-config mr,
+
+  }
+}

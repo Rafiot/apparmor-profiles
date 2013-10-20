@@ -1,0 +1,26 @@
+# Author: Kees Cook <kees@ubuntu.com>
+
+#include <tunables/global>
+/usr/lib/dovecot/imap flags=(complain) {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability setgid,
+  capability setuid,
+
+  @{HOME} r,
+  @{HOME}/Maildir/ rw,
+  @{HOME}/Maildir/** klrw,
+  @{HOME}/Mail/ rw,
+  @{HOME}/Mail/* klrw,
+  @{HOME}/Mail/.imap/** klrw,
+  @{HOME}/mail/ rw,
+  @{HOME}/mail/* klrw,
+  @{HOME}/mail/.imap/** klrw,
+  /usr/lib/dovecot/imap mr,
+  /var/mail/* klrw,
+  /var/spool/mail/* klrw,
+
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/usr.lib.dovecot.imap>
+}

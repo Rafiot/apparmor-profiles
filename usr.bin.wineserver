@@ -1,0 +1,26 @@
+# Last Modified: Sat Oct 19 16:42:31 2013
+#include <tunables/global>
+
+/usr/bin/wineserver {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/private-files-strict>
+  #include <abstractions/user-tmp>
+
+  capability sys_ptrace,
+
+
+  deny / r,
+
+  owner /tmp/.wine-*/** rwlk,
+  /tmp/.wine-*/** m,
+  /usr/bin/wineserver mr,
+  /usr/share/wine/* r,
+  @{HOME}/.local/share/icons/hicolor/** w,
+  @{HOME}/.wine/ r,
+  @{HOME}/.wine/* mrw,
+  @{HOME}/.wine/drive_c/ r,
+  @{HOME}/.wine/drive_c/** rwk,
+  owner @{PROC}/[0-9]*/mem r,
+
+}

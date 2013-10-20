@@ -1,0 +1,12 @@
+# Last Modified: Sun Oct 13 23:19:43 2013
+#include <tunables/global>
+
+/usr/lib/gnupg/gpgkeys_hkp flags=(complain) {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+
+
+  /usr/lib/gnupg/gpgkeys_hkp mr,
+
+}

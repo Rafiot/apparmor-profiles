@@ -1,0 +1,12 @@
+# vim:syntax=apparmor
+# nvidia access requirements
+  
+  # configuration queries
+  capability ipc_lock,
+
+  # device files
+  /dev/nvidia0    rw,
+  /dev/nvidiactl  rw,
+
+  /proc/interrupts r,
+  /proc/sys/vm/max_map_count r,

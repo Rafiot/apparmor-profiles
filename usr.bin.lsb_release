@@ -1,0 +1,31 @@
+# Last Modified: Wed Oct 16 16:12:09 2013
+#include <tunables/global>
+
+/usr/bin/lsb_release {
+  #include <abstractions/base>
+  #include <abstractions/private-files-strict>
+  #include <abstractions/python>
+
+
+  deny /etc/nsswitch.conf r,
+
+  /etc/apt/apt.conf.d r,
+  /etc/default/apport r,
+  /etc/lsb-release r,
+  /etc/passwd r,
+  @{PROC}/meminfo r,
+  /usr/bin/ r,
+  /usr/bin/dpkg-query rix,
+  /usr/bin/lsb_release r,
+  /usr/bin/python3.3 rix,
+  /usr/lib/python*/dist-packages/* m,
+  /usr/lib/python*/lib-dynload/* m,
+  /usr/local/lib/python3.3/dist-packages/ r,
+  /usr/local/lib/python3.3/dist-packages/easy-install.pth r,
+  /var/lib/dpkg/arch r,
+  /var/lib/dpkg/status r,
+  /var/lib/dpkg/triggers/* r,
+  /var/lib/dpkg/updates/ r,
+  owner @{PROC}/[0-9]*/fd/ r,
+
+}

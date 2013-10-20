@@ -1,0 +1,93 @@
+# Last Modified: Mon Oct 21 00:10:23 2013
+#include <tunables/global>
+
+/bin/dbus-daemon flags=(complain) {
+  #include <abstractions/base>
+  #include <abstractions/dbus-session>
+  #include <abstractions/lightdm>
+
+  capability block_suspend,
+  capability sys_resource,
+
+
+
+  /home/*/.local/share/zeitgeist/fts.index/* rw,
+  owner /run/user/*/dconf/user rw,
+  /sys/kernel/security/apparmor/.access mrw,
+  /usr/bin/dbus-send Cx,
+  /usr/bin/kuiserver Px,
+  /usr/bin/zeitgeist-daemon Px,
+  /usr/lib/at-spi2-core/at-spi-bus-launcher Cx,
+  /usr/lib/gvfs/gvfs-udisks2-volume-monitor Cx,
+  /usr/lib/gvfs/gvfsd Cx,
+  /usr/lib/telepathy/mission-control-5 Cx,
+  /usr/lib/x86_64-linux-gnu/gconf/gconfd-2 Cx,
+  /usr/lib/zeitgeist/zeitgeist-fts Px,
+  @{HOME}/.Xauthority r,
+  @{HOME}/.config/dconf/* r,
+  @{PROC}/[0-9]*/cmdline r,
+
+
+  profile /usr/bin/dbus-send flags=(complain) {
+    #include <abstractions/base>
+
+
+    /usr/bin/dbus-send mr,
+
+  }
+
+  profile /usr/lib/gvfs/gvfs-udisks2-volume-monitor flags=(complain) {
+    #include <abstractions/base>
+
+
+    /etc/fstab r,
+    /usr/lib/gvfs/gvfs-udisks2-volume-monitor mr,
+    @{PROC}/[0-9]*/mounts r,
+
+  }
+
+  profile /usr/lib/gvfs/gvfsd flags=(complain) {
+    #include <abstractions/base>
+    #include <abstractions/dbus-session>
+    #include <abstractions/lightdm>
+
+
+
+    /usr/lib/gvfs/gvfsd-http Px,
+    @{PROC}/[0-9]*/fd/ r,
+
+  }
+
+  profile /usr/lib/telepathy/mission-control-5 flags=(complain) {
+    #include <abstractions/base>
+    #include <abstractions/dbus>
+
+
+    /etc/passwd r,
+    owner /run/user/*/dconf/user rw,
+    /tmp/ r,
+    /usr/lib/telepathy/mission-control-5 mr,
+    /usr/share/glib-2.0/schemas/gschemas.compiled r,
+    /usr/share/telepathy/** r,
+    /var/tmp/ r,
+    owner @{HOME}/.config/dconf/user r,
+    owner @{HOME}/.local/share/telepathy/** r,
+    @{PROC}/filesystems r,
+
+  }
+
+  profile /usr/lib/x86_64-linux-gnu/gconf/gconfd-2 flags=(complain) {
+    #include <abstractions/base>
+    #include <abstractions/dbus-session>
+    #include <abstractions/nameservice>
+
+
+    /etc/gconf/** r,
+    /usr/lib/x86_64-linux-gnu/gconf/gconfd-2 mr,
+    /var/lib/gconf/** r,
+    @{HOME}/.gconf/ r,
+    @{HOME}/.gconf/** rw,
+    @{PROC}/filesystems r,
+
+  }
+}
