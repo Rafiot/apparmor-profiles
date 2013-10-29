@@ -12,9 +12,7 @@
 
   deny /etc/nsswitch.conf r,
   deny /etc/passwd r,
-  deny /home/ r,
   deny /var/lib/dbus/machine-id r,
-  deny @{HOME}/ r,
   deny @{HOME}/.kde/cache-*/icon-cache.kcache rw,
 
   @{HOME}/.kde/share/config/* r,
