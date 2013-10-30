@@ -14,8 +14,12 @@
 /usr/lib/firefox/firefox{,*[^s][^h]} {
   #include <abstractions/audio>
   #include <abstractions/cups-client>
+  # TODO: finetune this for required accesses
+  #include <abstractions/dbus>
+  #include <abstractions/dbus-accessibility>
   #include <abstractions/dbus-session>
   #include <abstractions/gnome>
+  #include <abstractions/ibus>
   #include <abstractions/nameservice>
   #include <abstractions/p11-kit>
 
@@ -128,7 +132,6 @@
   owner @{HOME}/.{firefox,mozilla}/**/*.{db,parentlock,sqlite}* k,
   owner @{HOME}/.{firefox,mozilla}/plugins/** rm,
   owner @{HOME}/.{firefox,mozilla}/**/plugins/** rm,
-  owner @{HOME}/.config/ibus/bus/ w,
   owner @{HOME}/.gnome2/firefox*-bin-* rw,
   owner @{HOME}/.cache/mozilla/{,firefox/} rw,
   owner @{HOME}/.cache/mozilla/firefox/** rw,

@@ -1,4 +1,4 @@
-# Last Modified: Mon Oct 21 00:10:23 2013
+# Last Modified: Wed Oct 30 22:56:11 2013
 #include <tunables/global>
 
 /bin/dbus-daemon flags=(complain) {
@@ -11,7 +11,8 @@
 
 
 
-  /home/*/.local/share/zeitgeist/fts.index/* rw,
+  @{HOME}/.local/share/gvfs-metadata/* rw,
+  @{HOME}/.local/share/zeitgeist/fts.index/* rw,
   owner /run/user/*/dconf/user rw,
   /sys/kernel/security/apparmor/.access mrw,
   /usr/bin/dbus-send Cx,
@@ -24,7 +25,7 @@
   /usr/lib/x86_64-linux-gnu/gconf/gconfd-2 Cx,
   /usr/lib/zeitgeist/zeitgeist-fts Px,
   @{HOME}/.Xauthority r,
-  @{HOME}/.config/dconf/* r,
+  @{HOME}/.config/dconf/* rw,
   @{PROC}/[0-9]*/cmdline r,
 
 

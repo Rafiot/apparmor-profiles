@@ -1,4 +1,4 @@
-# Last Modified: Thu Oct 17 23:33:57 2013
+# Last Modified: Wed Oct 30 15:36:35 2013
 #include <tunables/global>
 
 /usr/bin/psi-plus {
@@ -17,17 +17,18 @@
   network inet6 stream,
 
   deny /etc/xdg/Trolltech.conf rk,
-  deny @{HOME}/ r,
-  deny @{HOME}/.config/autostart/psi-plus.desktop r,
   deny /usr/bin/kfmclient x,
   deny /usr/bin/python3.3 r,
   deny /usr/bin/xdg-open x,
   deny /usr/lib/firefox/firefox.sh x,
+  deny @{HOME}/ r,
+  deny @{HOME}/.config/autostart/* rw,
   deny @{HOME}/.kde/tmp-*/xauth-* r,
 
   /etc/lsb-release r,
   /etc/xdg/sni-qt.conf rk,
-  /home/*/.local/share/psi\+/ r,
+  @{HOME}/.kde/share/config/oxygenrc r,
+  @{HOME}/.local/share/psi\+/ r,
   /usr/bin/lsb_release rPx,
   /usr/bin/psi-plus r,
   /usr/share/javascript/mathjax/fonts/HTML-CSS/TeX/otf/ r,
