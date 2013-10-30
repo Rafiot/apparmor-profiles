@@ -1,7 +1,7 @@
 # Last Modified: Tue Oct 15 23:14:10 2013
 #include <tunables/global>
 
-/usr/lib/firefox/firefox.sh flags=(complain) {
+/usr/lib/firefox/firefox.sh {
   #include <abstractions/base>
   #include <abstractions/bash>
   #include <abstractions/consoles>
@@ -21,7 +21,7 @@
   /usr/share/misc/magic.mgc r,
 
 
-  profile /bin/which flags=(complain) {
+  profile /bin/which {
     #include <abstractions/base>
     #include <abstractions/bash>
 
