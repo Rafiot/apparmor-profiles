@@ -1,8 +1,9 @@
-# Last Modified: Thu Oct 17 20:28:02 2013
+# Last Modified: Thu Oct 31 23:01:28 2013
 #include <tunables/global>
 
 /usr/bin/okular {
   #include <abstractions/base>
+  #include <abstractions/dbus-session>
   #include <abstractions/evince>
   #include <abstractions/fonts>
   #include <abstractions/kde>
@@ -15,8 +16,8 @@
   deny /var/lib/dbus/machine-id r,
   deny @{HOME}/.kde/cache-*/icon-cache.kcache rw,
 
+  @{HOME}/.kde/share/config/okularrc* w,
   @{HOME}/.kde/share/config/* r,
-  owner @{HOME}/.kde/share/config/okularrc.lock rw,
   /usr/bin/kbuildsycoca4 Cx,
   owner @{HOME}/.cache/fontconfig/* r,
   owner @{HOME}/.config/Trolltech.conf r,

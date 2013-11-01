@@ -1,4 +1,4 @@
-# Last Modified: Wed Oct 30 22:56:11 2013
+# Last Modified: Thu Oct 31 22:50:41 2013
 #include <tunables/global>
 
 /bin/dbus-daemon flags=(complain) {
@@ -11,8 +11,7 @@
 
 
 
-  @{HOME}/.local/share/gvfs-metadata/* rw,
-  @{HOME}/.local/share/zeitgeist/fts.index/* rw,
+  @{HOME}/.local/share/gvfs-metadata/ r,
   owner /run/user/*/dconf/user rw,
   /sys/kernel/security/apparmor/.access mrw,
   /usr/bin/dbus-send Cx,
@@ -25,7 +24,12 @@
   /usr/lib/x86_64-linux-gnu/gconf/gconfd-2 Cx,
   /usr/lib/zeitgeist/zeitgeist-fts Px,
   @{HOME}/.Xauthority r,
+  @{HOME}/.config/Trolltech.conf r,
   @{HOME}/.config/dconf/* rw,
+  @{HOME}/.config/fontconfig/fonts.conf r,
+  @{HOME}/.kde/share/config/* r,
+  @{HOME}/.local/share/gvfs-metadata/* rw,
+  @{HOME}/.local/share/zeitgeist/fts.index/* rw,
   @{PROC}/[0-9]*/cmdline r,
 
 
@@ -39,10 +43,9 @@
 
   profile /usr/lib/gvfs/gvfs-udisks2-volume-monitor flags=(complain) {
     #include <abstractions/base>
+    #include <abstractions/lightdm>
 
 
-    /etc/fstab r,
-    /usr/lib/gvfs/gvfs-udisks2-volume-monitor mr,
     @{PROC}/[0-9]*/mounts r,
 
   }
