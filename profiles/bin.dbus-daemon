@@ -1,4 +1,4 @@
-# Last Modified: Thu Oct 31 22:50:41 2013
+# Last Modified: Fri Nov  1 12:13:10 2013
 #include <tunables/global>
 
 /bin/dbus-daemon flags=(complain) {
@@ -11,7 +11,7 @@
 
 
 
-  @{HOME}/.local/share/gvfs-metadata/ r,
+  @{HOME}/.gphoto/ w,
   owner /run/user/*/dconf/user rw,
   /sys/kernel/security/apparmor/.access mrw,
   /usr/bin/dbus-send Cx,
@@ -28,6 +28,7 @@
   @{HOME}/.config/dconf/* rw,
   @{HOME}/.config/fontconfig/fonts.conf r,
   @{HOME}/.kde/share/config/* r,
+  @{HOME}/.local/share/gvfs-metadata/ r,
   @{HOME}/.local/share/gvfs-metadata/* rw,
   @{HOME}/.local/share/zeitgeist/fts.index/* rw,
   @{PROC}/[0-9]*/cmdline r,
@@ -54,7 +55,6 @@
     #include <abstractions/base>
     #include <abstractions/dbus-session>
     #include <abstractions/lightdm>
-
 
 
     /usr/lib/gvfs/gvfsd-http Px,

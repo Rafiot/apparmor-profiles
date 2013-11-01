@@ -1,7 +1,7 @@
-# Last Modified: Thu Oct 31 22:20:35 2013
+# Last Modified: Fri Nov  1 14:48:40 2013
 #include <tunables/global>
 
-/usr/bin/claws-mail {
+/usr/bin/claws-mail flags=(complain) {
   #include <abstractions/base>
   #include <abstractions/enchant>
   #include <abstractions/fonts>
@@ -9,25 +9,24 @@
   #include <abstractions/nameservice>
   #include <abstractions/p11-kit>
   #include <abstractions/private-files-strict>
+  #include <abstractions/ubuntu-browsers.d/user-files>
   #include <abstractions/user-tmp>
 
 
   deny / r,
   deny /bin/dash rx,
-  deny @{HOME}/ r,
-  deny @{HOME}/.config/gtk-2.0/* w,
-  deny /tmp/.X0-lock r,
   deny /usr/share/gvfs/remote-volume-monitors/* r,
   deny /var/lib/dbus/machine-id r,
+  deny @{HOME}/ r,
+  deny @{HOME}/.config/gtk-2.0/* w,
   deny @{HOME}/.config/oxygen-gtk/argb-apps.conf w,
-  deny @{HOME}/.gnupg/* w,
 
   /etc/X11/cursors/* r,
   /etc/fstab r,
   /etc/kde4rc r,
   /etc/mailcap r,
   /etc/xdg/Trolltech.conf rk,
-  @{HOME}/Desktop/ r,
+  @{HOME}/.kde/share/config/* r,
   /usr/bin/claws-mail mr,
   /usr/bin/gpg rPx,
   /usr/bin/gpgconf rPx,
@@ -60,18 +59,7 @@
   /var/tmp/kdecache-*/* r,
   @{HOME}/.claws-mail/** rw,
   @{HOME}/.config/Trolltech.conf rk,
-  @{HOME}/.config/enchant/ r,
-  @{HOME}/.config/fontconfig/fonts.conf r,
-  @{HOME}/.config/gtk-2.0/gtkfilechooser.ini r,
-  @{HOME}/.config/oxygen-gtk/argb-apps.conf r,
-  @{HOME}/.gnupg/gpg.conf r,
-  @{HOME}/.gtk-bookmarks r,
-  @{HOME}/.gtkrc-2.0 r,
   @{HOME}/.kde/share/apps/okular/docdata/* w,
-  @{HOME}/.kde/share/config/* r,
-  @{HOME}/.kde/share/config/gtkrc-2.0 r,
-  @{HOME}/.kde/share/config/kdeglobals r,
-  @{HOME}/.signature r,
   @{HOME}/Mail/** rw,
   @{PROC}/[0-9]*/cmdline r,
   @{PROC}/[0-9]*/fd/ r,

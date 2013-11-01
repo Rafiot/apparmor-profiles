@@ -1,4 +1,4 @@
-# Last Modified: Thu Oct 31 23:01:28 2013
+# Last Modified: Fri Nov  1 01:29:09 2013
 #include <tunables/global>
 
 /usr/bin/okular {
@@ -16,8 +16,7 @@
   deny /var/lib/dbus/machine-id r,
   deny @{HOME}/.kde/cache-*/icon-cache.kcache rw,
 
-  @{HOME}/.kde/share/config/okularrc* w,
-  @{HOME}/.kde/share/config/* r,
+  @{HOME}/.kde/share/config/* rw,
   /usr/bin/kbuildsycoca4 Cx,
   owner @{HOME}/.cache/fontconfig/* r,
   owner @{HOME}/.config/Trolltech.conf r,
@@ -29,6 +28,7 @@
   @{HOME}/.kde/share/apps/kfileplaces/bookmarks.xml r,
   @{HOME}/.kde/share/apps/okular/** rw,
   @{HOME}/.kde/share/config/* rw,
+  @{HOME}/.kde/share/config/okularrc* w,
   @{HOME}/.kde/socket-*/* w,
   @{HOME}/.kde/tmp-*/* rw,
   @{HOME}/.local/share/user-places.xbel r,
