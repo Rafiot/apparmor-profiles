@@ -11,7 +11,7 @@
 
 #include <tunables/global>
 
-/usr/sbin/identd {
+/usr/sbin/identd flags=(complain) {
   #include <abstractions/base>
   #include <abstractions/nameservice>
   capability net_bind_service,

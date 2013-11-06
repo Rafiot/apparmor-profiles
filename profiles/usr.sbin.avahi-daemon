@@ -1,10 +1,9 @@
 #include <tunables/global>
-/usr/sbin/avahi-daemon {
+/usr/sbin/avahi-daemon flags=(complain) {
   #include <abstractions/base>
   #include <abstractions/consoles>
   #include <abstractions/dbus>
   #include <abstractions/nameservice>
-  #include <abstractions/private-files-strict>
 
   capability chown,
   capability dac_override,
@@ -18,7 +17,7 @@
   /etc/avahi/hosts r,
   /etc/avahi/services/ r,
   /etc/avahi/services/*.service r,
-  owner @{PROC}/[0-9]*/fd/ r,
+  /proc/*/fd/ r,
   /usr/sbin/avahi-daemon mr,
   /usr/share/avahi/introspection/*.introspect r,
   /usr/share/dbus-1/interfaces/org.freedesktop.Avahi.*.xml r,

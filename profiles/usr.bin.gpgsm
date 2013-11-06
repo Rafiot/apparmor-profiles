@@ -1,9 +1,0 @@
-# Last Modified: Sun Oct 13 18:11:14 2013
-#include <tunables/global>
-
-/usr/bin/gpgsm {
-  #include <abstractions/base>
-
-  /usr/bin/gpgsm mr,
-
-}

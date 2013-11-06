@@ -11,7 +11,7 @@
 
 #include <tunables/global>
 
-/usr/sbin/mdnsd {
+/usr/sbin/mdnsd flags=(complain) {
   #include <abstractions/base>
   #include <abstractions/consoles>
   #include <abstractions/nameservice>

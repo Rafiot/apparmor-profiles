@@ -3,7 +3,7 @@
 
 #include <tunables/global>
 
-/usr/lib/lightdm/lightdm/lightdm-guest-session-wrapper flags=(complain) {
+/usr/lib/lightdm/lightdm/lightdm-guest-session-wrapper {
   # Most applications are confined via the main abstraction
   #include <abstractions/lightdm>
 

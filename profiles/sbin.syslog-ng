@@ -15,7 +15,7 @@
 #define this to be where syslog-ng is chrooted
 @{CHROOT_BASE}=""
 
-/sbin/syslog-ng {
+/sbin/syslog-ng flags=(complain) {
   #include <abstractions/base>
   #include <abstractions/consoles>
   #include <abstractions/nameservice>

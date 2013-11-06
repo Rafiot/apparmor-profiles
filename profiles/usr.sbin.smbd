@@ -1,6 +1,6 @@
 #include <tunables/global>
 
-/usr/sbin/smbd {
+/usr/sbin/smbd flags=(complain) {
   #include <abstractions/authentication>
   #include <abstractions/base>
   #include <abstractions/consoles>
@@ -24,8 +24,8 @@
   /etc/netgroup r,
   /etc/printcap r,
   /etc/samba/* rwk,
-  @{PROC}/[0-9]*/mounts r,
-  @{PROC}/sys/kernel/core_pattern r,
+  /proc/*/mounts r,
+  /proc/sys/kernel/core_pattern r,
   /usr/lib*/samba/vfs/*.so mr,
   /usr/lib*/samba/charset/*.so mr,
   /usr/lib*/samba/auth/script.so mr,

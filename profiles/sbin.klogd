@@ -11,7 +11,7 @@
 
 #include <tunables/global>
 
-/sbin/klogd {
+/sbin/klogd flags=(complain) {
   #include <abstractions/base>
 
   capability sys_admin, # for backward compatibility with kernel <= 2.6.37

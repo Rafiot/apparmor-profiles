@@ -11,7 +11,7 @@
 
 #include <tunables/global>
 
-/sbin/syslogd {
+/sbin/syslogd flags=(complain) {
   #include <abstractions/base>
   #include <abstractions/nameservice>
   #include <abstractions/consoles>

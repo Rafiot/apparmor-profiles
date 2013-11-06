@@ -1,9 +1,0 @@
-# Last Modified: Sun Oct 13 18:11:22 2013
-#include <tunables/global>
-
-/usr/bin/gpgconf {
-  #include <abstractions/base>
-
-  /usr/bin/gpgconf mr,
-
-}

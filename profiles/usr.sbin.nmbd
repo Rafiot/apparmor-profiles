@@ -1,13 +1,13 @@
 #include <tunables/global>
 
-/usr/sbin/nmbd {
+/usr/sbin/nmbd flags=(complain) {
   #include <abstractions/base>
   #include <abstractions/nameservice>
   #include <abstractions/samba>
 
   capability net_bind_service,
 
-  @{PROC}/sys/kernel/core_pattern r,
+  /proc/sys/kernel/core_pattern r,
 
   /usr/sbin/nmbd mr,
 

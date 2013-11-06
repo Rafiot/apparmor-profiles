@@ -11,7 +11,7 @@
   capability chown,
   capability dac_override,
 
-  @{PROC}/[0-9]*/mounts r,
+  /proc/*/mounts r,
   /usr/lib/dovecot/dovecot-auth mr,
   /{,var/}run/dovecot/** rw,
   # required for postfix+dovecot integration
