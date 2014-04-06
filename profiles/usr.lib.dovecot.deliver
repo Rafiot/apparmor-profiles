@@ -1,7 +1,7 @@
 # Author: Dulmandakh Sukhbaatar <dulmandakh@gmail.com>
 
 #include <tunables/global>
-/usr/lib/dovecot/deliver flags=(complain) {
+/usr/lib/dovecot/deliver {
   #include <abstractions/base>
   #include <abstractions/nameservice>
 

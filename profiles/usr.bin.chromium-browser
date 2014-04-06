@@ -2,7 +2,7 @@
 #include <tunables/global>
 
 # We need 'flags=(attach_disconnected)' in newer chromium versions
-/usr/lib/chromium-browser/chromium-browser {
+/usr/lib/chromium-browser/chromium-browser flags=(complain, attach_disconnected) {
   #include <abstractions/audio>
   #include <abstractions/cups-client>
   #include <abstractions/dbus-session>

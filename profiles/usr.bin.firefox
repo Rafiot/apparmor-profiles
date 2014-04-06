@@ -21,6 +21,7 @@
   #include <abstractions/nameservice>
   #include <abstractions/p11-kit>
   #include <abstractions/private-files>
+
   # Addons
   #include <abstractions/ubuntu-browsers.d/firefox>
 
@@ -146,23 +147,6 @@
   deny /usr/lib/xulrunner-addons/extensions/**/ w,
   deny /usr/share/mozilla/extensions/**/ w,
   deny /usr/share/mozilla/ w,
-
-  # from abstractions/private-files-strict, except firefox
-  # potentially extremely sensitive files
-  audit deny @{HOME}/.gnupg/** mrwkl,
-  audit deny @{HOME}/.ssh/** mrwkl,
-  audit deny @{HOME}/.gnome2_private/** mrwkl,
-  audit deny @{HOME}/.gnome2/keyrings/** mrwkl,
-  # don't allow access to any gnome-keyring modules
-  audit deny /{,var/}run/user/[0-9]*/keyring** mrwkl,
-  audit deny @{HOME}/.config/chromium/** mrwkl,
-  audit deny @{HOME}/.thunderbird/** mrwkl,
-  audit deny @{HOME}/.evolution/** mrwkl,
-  audit deny @{HOME}/.config/evolution/** mrwkl,
-  audit deny @{HOME}/.kde{,4}/share/apps/kmail{,2}/** mrwkl,
-  audit deny @{HOME}/.kde{,4}/share/apps/kwallet/** mrwkl,
-
-
 
   # Miscellaneous (to be abstracted)
   # Ideally these would use a child profile. They are all ELF executables

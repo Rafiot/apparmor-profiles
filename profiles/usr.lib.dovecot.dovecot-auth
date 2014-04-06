@@ -1,7 +1,7 @@
 # Author: Kees Cook <kees@ubuntu.com>
 
 #include <tunables/global>
-/usr/lib/dovecot/dovecot-auth flags=(complain) {
+/usr/lib/dovecot/dovecot-auth {
   #include <abstractions/authentication>
   #include <abstractions/base>
   #include <abstractions/nameservice>

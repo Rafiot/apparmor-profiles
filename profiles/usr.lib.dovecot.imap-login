@@ -1,7 +1,7 @@
 # Author: Kees Cook <kees@ubuntu.com>
 
 #include <tunables/global>
-/usr/lib/dovecot/imap-login flags=(complain) {
+/usr/lib/dovecot/imap-login {
   #include <abstractions/base>
   #include <abstractions/ssl_certs>
   #include <abstractions/ssl_keys>
