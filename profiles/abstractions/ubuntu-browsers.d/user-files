@@ -5,7 +5,6 @@
   @{HOME}/ r,
   @{HOME}/** r,
   owner @{HOME}/** w,
-  owner @{HOME}/Desktop/** r,
 
   # Do not allow read and/or write to particularly sensitive/problematic files
   #include <abstractions/private-files>

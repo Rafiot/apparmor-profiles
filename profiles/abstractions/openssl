@@ -10,4 +10,5 @@
 
   /etc/ssl/openssl.cnf r,
   /usr/share/ssl/openssl.cnf r,
+  @{PROC}/sys/crypto/fips_enabled r,
 

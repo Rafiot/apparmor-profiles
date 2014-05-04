@@ -14,13 +14,15 @@
 /usr/lib/firefox/firefox{,*[^s][^h]} {
   #include <abstractions/audio>
   #include <abstractions/cups-client>
+  # TODO: finetune this for required accesses
+  #include <abstractions/dbus>
   #include <abstractions/dbus-accessibility>
   #include <abstractions/dbus-session>
   #include <abstractions/gnome>
   #include <abstractions/ibus>
   #include <abstractions/nameservice>
   #include <abstractions/p11-kit>
-  #include <abstractions/private-files>
+
   # Addons
   #include <abstractions/ubuntu-browsers.d/firefox>
 
@@ -44,6 +46,10 @@
   owner /tmp/** m,
   owner /var/tmp/** m,
   /tmp/.X[0-9]*-lock r,
+  /etc/udev/udev.conf r,
+  # Doesn't seem to be required, but noisy. Maybe allow 'r' for 'b*' if needed.
+  # Possibly move to an abstraction if anything else needs it.
+  deny /run/udev/data/** r,
 
   /etc/timezone r,
   /etc/wildmidi/wildmidi.cfg r,
@@ -86,6 +92,7 @@
   owner @{PROC}/[0-9]*/task/[0-9]*/stat r,
   @{PROC}/[0-9]*/status r,
   @{PROC}/filesystems r,
+  /sys/devices/pci[0-9]*/**/uevent r,
   owner @{HOME}/.thumbnails/*/*.png r,
 
   /etc/mtab r,
@@ -146,23 +153,6 @@
   deny /usr/lib/xulrunner-addons/extensions/**/ w,
   deny /usr/share/mozilla/extensions/**/ w,
   deny /usr/share/mozilla/ w,
-
-  # from abstractions/private-files-strict, except firefox
-  # potentially extremely sensitive files
-  audit deny @{HOME}/.gnupg/** mrwkl,
-  audit deny @{HOME}/.ssh/** mrwkl,
-  audit deny @{HOME}/.gnome2_private/** mrwkl,
-  audit deny @{HOME}/.gnome2/keyrings/** mrwkl,
-  # don't allow access to any gnome-keyring modules
-  audit deny /{,var/}run/user/[0-9]*/keyring** mrwkl,
-  audit deny @{HOME}/.config/chromium/** mrwkl,
-  audit deny @{HOME}/.thunderbird/** mrwkl,
-  audit deny @{HOME}/.evolution/** mrwkl,
-  audit deny @{HOME}/.config/evolution/** mrwkl,
-  audit deny @{HOME}/.kde{,4}/share/apps/kmail{,2}/** mrwkl,
-  audit deny @{HOME}/.kde{,4}/share/apps/kwallet/** mrwkl,
-
-
 
   # Miscellaneous (to be abstracted)
   # Ideally these would use a child profile. They are all ELF executables

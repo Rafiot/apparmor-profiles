@@ -32,7 +32,7 @@
 
   # bash inspects filesystems at startup
   /etc/mtab                        r,
-  @{PROC}/[0-9]*/mounts            r,
+  @{PROC}/@{pid}/mounts            r,
   @{PROC}/filesystems              r,
 
   # probably readline wants to know terminal capabilities
@@ -40,5 +40,5 @@
 
   # run out of /etc/bash.bashrc
   /etc/DIR_COLORS                  r,
-  /bin/ls                          mix,
+  /{usr/,}bin/ls                   mix,
   /usr/bin/dircolors               mix,

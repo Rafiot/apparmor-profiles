@@ -35,7 +35,11 @@
   /usr/bin/evince-previewer Px,
   /usr/bin/yelp Cx -> sanitized_helper,
   /usr/bin/bug-buddy px,
-  /usr/bin/nautilus Cx -> sanitized_helper,
+  # 'Show Containing Folder' (LP: #1022962)
+  /usr/bin/nautilus Cx -> sanitized_helper, # Gnome
+  /usr/bin/pcmanfm Cx -> sanitized_helper,  # LXDE
+  /usr/bin/krusader Cx -> sanitized_helper, # KDE
+  /usr/bin/thunar Cx -> sanitized_helper,   # XFCE
 
   # For Xubuntu to launch the browser
   /usr/bin/exo-open ixr,
@@ -92,6 +96,11 @@
   /**.[gG][zZ]         rw,
   /**.[bB][zZ]2        rw,
   /**.[cC][bB][rRzZ7]  rw,
+  /**.[xX][zZ]         rw,
+
+  # allow creating directories that we own
+  owner /media/**/ w,
+  owner @{HOME}/**/ w,
 
   # evince creates a temporary stream file like '.goutputstream-XXXXXX' in the
   # directory a file is saved. This allows that behavior.

@@ -22,8 +22,10 @@
   /etc/protocols          r,
 
   # When using sssd, the passwd and group files are stored in an alternate path
+  # and the nss plugin also needs to talk to a pipe
   /var/lib/sss/mc/group   r,
   /var/lib/sss/mc/passwd  r,
+  /var/lib/sss/pipes/nss  rw,
 
   /etc/resolv.conf        r,
   # on systems using resolvconf, /etc/resolv.conf is a symlink to
@@ -54,7 +56,7 @@
   /etc/default/nss               r,
 
   # avahi-daemon is used for mdns4 resolution
-  /{,var/}run/avahi-daemon/socket w,
+  /{,var/}run/avahi-daemon/socket rw,
 
   # nis
   #include <abstractions/nis>
@@ -81,4 +83,4 @@
   network inet6 dgram,
 
   # interface details
-  @{PROC}/*/net/route r,
+  @{PROC}/@{pid}/net/route r,

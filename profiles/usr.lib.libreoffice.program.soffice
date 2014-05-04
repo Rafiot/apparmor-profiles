@@ -1,7 +1,7 @@
 # Last Modified: Fri Nov  1 01:35:05 2013
 #include <tunables/global>
 
-/usr/lib/libreoffice/program/soffice {
+/usr/lib/libreoffice/program/soffice flags=(complain) {
   #include <abstractions/base>
   #include <abstractions/bash>
   #include <abstractions/nameservice>

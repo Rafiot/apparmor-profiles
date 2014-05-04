@@ -1,7 +1,7 @@
 # Last Modified: Sat Oct 19 16:42:30 2013
 #include <tunables/global>
 
-/usr/bin/wine-preloader {
+/usr/bin/wine-preloader flags=(complain) {
   #include <abstractions/base>
   #include <abstractions/fonts>
   #include <abstractions/lightdm>
@@ -20,7 +20,7 @@
   @{PROC}/cpuinfo r,
 
 
-  profile /usr/bin/ntlm_auth {
+  profile /usr/bin/ntlm_auth flags=(complain) {
     #include <abstractions/base>
     #include <abstractions/private-files-strict>
 

@@ -20,7 +20,7 @@
   /usr/lib/@{multiarch}/krb5/plugins/preauth/ r,
   /usr/lib/@{multiarch}/krb5/plugins/preauth/* mr,
 
-  /etc/krb5.keytab            r,
+  /etc/krb5.keytab            rk,
   /etc/krb5.conf              r,
 
   # config files found via strings on libs

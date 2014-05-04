@@ -9,17 +9,13 @@
 #
 # ------------------------------------------------------------------
 
-  /usr/lib{,32,64}/ruby/1.[89]/ r,
-  /usr/lib{,32,64}/ruby/1.[89]/*.rb r,
-  /usr/lib{,32,64}/ruby/1.[89]/**/*.rb r,
-  /usr/lib{,32,64}/ruby/1.[89]/*-linux/*.so mr,
-  /usr/lib{,32,64}/ruby/1.[89]/*-linux/**/*.so mr,
+  /usr/lib{,32,64}/ruby/1.[89]{.[0-9],}/ r,
+  /usr/lib{,32,64}/ruby/1.[89]{.[0-9],}/**.rb r,
+  /usr/lib{,32,64}/ruby/1.[89]{.[0-9],}/*-linux/**.so mr,
 
-  /usr/lib{,32,64}/ruby/site_ruby/1.[89]/ r,
-  /usr/lib{,32,64}/ruby/site_ruby/1.[89]/*.rb r,
-  /usr/lib{,32,64}/ruby/site_ruby/1.[89]/**/*.rb r,
-  /usr/lib{,32,64}/ruby/site_ruby/1.[89]/*-linux/*.so mr,
-  /usr/lib{,32,64}/ruby/site_ruby/1.[89]/*-linux/**/*.so mr,
+  /usr/lib{,32,64}/ruby/site_ruby/1.[89]{.[0-9],}/ r,
+  /usr/lib{,32,64}/ruby/site_ruby/1.[89]{.[0-9],}/**.rb r,
+  /usr/lib{,32,64}/ruby/site_ruby/1.[89]{.[0-9],}/*-linux/**.so mr,
 
-  /usr/lib/ruby/gems/1.[89]/ r,
-  /usr/lib/ruby/gems/1.[89]/** r,
+  /usr/lib{,32,64}/ruby/gems/1.[89]{.[0-9],}/ r,
+  /usr/lib{,32,64}/ruby/gems/1.[89]{.[0-9],}/** r,

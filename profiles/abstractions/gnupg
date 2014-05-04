@@ -2,9 +2,9 @@
 # gnupg sub-process running permissions
 
   # user configurations
-  @{HOME}/.gnupg/options r,
-  @{HOME}/.gnupg/pubring.gpg r,
-  @{HOME}/.gnupg/random_seed rw,
-  @{HOME}/.gnupg/secring.gpg r,
-  @{HOME}/.gnupg/so/*.x86_64 mr,
-  @{HOME}/.gnupg/trustdb.gpg rw,
+  owner @{HOME}/.gnupg/options     r,
+  owner @{HOME}/.gnupg/pubring.gpg r,
+  owner @{HOME}/.gnupg/random_seed rw,
+  owner @{HOME}/.gnupg/secring.gpg r,
+  owner @{HOME}/.gnupg/so/*.x86_64 mr,
+  owner @{HOME}/.gnupg/trustdb.gpg rw,

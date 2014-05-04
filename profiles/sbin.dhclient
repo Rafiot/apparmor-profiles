@@ -68,6 +68,8 @@
   #include <abstractions/base>
   #include <abstractions/dbus>
   /usr/lib/NetworkManager/nm-dhcp-client.action mr,
+
+  /var/lib/NetworkManager/*lease r,
 }
 
 /usr/lib/connman/scripts/dhclient-script {

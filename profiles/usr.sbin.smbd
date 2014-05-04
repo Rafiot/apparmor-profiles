@@ -1,6 +1,6 @@
 #include <tunables/global>
 
-/usr/sbin/smbd {
+/usr/sbin/smbd flags=(complain) {
   #include <abstractions/authentication>
   #include <abstractions/base>
   #include <abstractions/consoles>
@@ -24,24 +24,25 @@
   /etc/netgroup r,
   /etc/printcap r,
   /etc/samba/* rwk,
-  @{PROC}/[0-9]*/mounts r,
+  @{PROC}/@{pid}/mounts r,
   @{PROC}/sys/kernel/core_pattern r,
   /usr/lib*/samba/vfs/*.so mr,
   /usr/lib*/samba/charset/*.so mr,
   /usr/lib*/samba/auth/script.so mr,
-  /usr/lib*/samba/{lowercase,upcase,valid}.dat r,
+  /usr/lib*/samba/pdb/*.so mr,
+  /usr/lib*/samba/{lowcase,upcase,valid}.dat r,
   /usr/sbin/smbd mr,
   /usr/sbin/smbldap-useradd Px,
   /var/cache/samba/** rwk,
   /var/cache/samba/printing/printers.tdb mrw,
   /var/lib/samba/** rwk,
-  /var/lib/samba/printers/** rw,
+  /var/lib/sss/pubconf/kdcinfo.* r,
   /{,var/}run/cups/cups.sock rw,
   /{,var/}run/dbus/system_bus_socket rw,
   /{,var/}run/samba/** rk,
+  /{,var/}run/samba/ncalrpc/ rw,
+  /{,var/}run/samba/ncalrpc/** rw,
   /{,var/}run/samba/smbd.pid rw,
-  /var/log/samba/cores/smbd/ rw,
-  /var/log/samba/cores/smbd/** rw,
   /var/spool/samba/** rw,
 
   @{HOMEDIRS}/** lrwk,

@@ -11,7 +11,7 @@
   /usr/share/apache2/** r,
 
   # changehat itself
-  /proc/*/attr/current                        w,
+  @{PROC}/@{pid}/attr/current                        w,
 
   # htaccess files - for what ever it is worth
   /**/.htaccess            r,

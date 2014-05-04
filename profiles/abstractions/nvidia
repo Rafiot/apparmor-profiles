@@ -4,9 +4,12 @@
   # configuration queries
   capability ipc_lock,
 
+  # libvdpau config file for nvidia workarounds
+  /etc/vdpau_wrapper.cfg r,
+
   # device files
   /dev/nvidia0    rw,
   /dev/nvidiactl  rw,
 
-  /proc/interrupts r,
-  /proc/sys/vm/max_map_count r,
+  @{PROC}/interrupts r,
+  @{PROC}/sys/vm/max_map_count r,

@@ -1,7 +1,7 @@
 # Last Modified: Sat Oct 19 16:42:29 2013
 #include <tunables/global>
 
-/usr/bin/wine {
+/usr/bin/wine flags=(complain) {
   #include <abstractions/X>
   #include <abstractions/audio>
   #include <abstractions/base>
@@ -42,7 +42,7 @@
   @{PROC}/scsi/scsi r,
 
 
-  profile /usr/bin/ntlm_auth {
+  profile /usr/bin/ntlm_auth flags=(complain) {
     #include <abstractions/base>
 
 
@@ -52,7 +52,7 @@
 
   }
 
-  profile /usr/bin/wine-preloader {
+  profile /usr/bin/wine-preloader flags=(complain) {
     #include <abstractions/X>
     #include <abstractions/audio>
     #include <abstractions/base>
@@ -88,7 +88,7 @@
 
   }
 
-  profile /usr/bin/wineserver {
+  profile /usr/bin/wineserver flags=(complain) {
     #include <abstractions/base>
     #include <abstractions/nameservice>
     #include <abstractions/private-files-strict>

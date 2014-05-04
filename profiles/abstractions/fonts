@@ -18,6 +18,7 @@
   /usr/share/fonts/**                   r,
 
   /etc/fonts/**                         r,
+  /usr/share/fontconfig/conf.avail/**   r,
 
   /opt/kde3/share/fonts/**              r,
 
@@ -30,20 +31,27 @@
   /usr/share/a2ps/fonts/**              r,
   /usr/share/xfce/fonts/**              r,
   /usr/share/ghostscript/fonts/**       r,
+  /usr/share/javascript/*/fonts/**      r,
   /usr/share/texmf/{,*/}fonts/**        r,
+  /usr/share/texlive/texmf-dist/fonts/** r,
   /var/lib/ghostscript/**               r,
 
-  @{HOME}/.fonts.conf                   r,
-  @{HOME}/.fonts/                       r,
-  @{HOME}/.fonts/**                     r,
-  @{HOME}/.fonts.cache-2               mr,
-  @{HOME}/.{,cache/}fontconfig/         r,
-  @{HOME}/.{,cache/}fontconfig/**     mrl,
-  @{HOME}/.fonts.conf.d/                r,
-  @{HOME}/.fonts.conf.d/**              r,
+  owner @{HOME}/.fonts.conf             r,
+  owner @{HOME}/.fonts/                 r,
+  owner @{HOME}/.fonts/**               r,
+  owner @{HOME}/.fonts.cache-2          mr,
+  owner @{HOME}/.{,cache/}fontconfig/   r,
+  owner @{HOME}/.{,cache/}fontconfig/** mrl,
+  owner @{HOME}/.fonts.conf.d/          r,
+  owner @{HOME}/.fonts.conf.d/**        r,
+  owner @{HOME}/.config/fontconfig/     r,
+  owner @{HOME}/.config/fontconfig/**   r,
 
   /usr/local/share/fonts/               r,
   /usr/local/share/fonts/**             r,
 
   # poppler CMap tables
   /usr/share/poppler/cMap/**            r,
+
+  # data files for LibThai
+  /usr/share/libthai/thbrk.tri          r,

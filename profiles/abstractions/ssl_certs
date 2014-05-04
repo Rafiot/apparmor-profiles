@@ -17,3 +17,5 @@
   /usr/share/ssl/certs/ca-bundle.crt          r,
   /usr/local/share/ca-certificates/ r,
   /usr/local/share/ca-certificates/** r,
+  /var/lib/ca-certificates/ r,
+  /var/lib/ca-certificates/** r,

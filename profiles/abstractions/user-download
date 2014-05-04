@@ -1,6 +1,7 @@
 # ------------------------------------------------------------------
 #
 #    Copyright (C) 2002-2006 Novell/SUSE
+#    Copyright (C) 2014 Canonical Ltd.
 #
 #    This program is free software; you can redistribute it and/or
 #    modify it under the terms of version 2 of the GNU General Public
@@ -15,7 +16,9 @@
   owner @{HOME}/[dD]ownload{,s}/	r,
   owner @{HOME}/[dD]ownload{,s}/**	rwl,
   owner @{HOME}/[a-zA-Z0-9]* 		rwl,
-  owner @{HOME}/Desktop/     		r,
-  owner @{HOME}/Desktop/*    		rwl,
+  owner @{HOME}/@{XDG_DESKTOP_DIR}/	r,
+  owner @{HOME}/@{XDG_DESKTOP_DIR}/*	rwl,
+  owner @{HOME}/@{XDG_DOWNLOAD_DIR}/	r,
+  owner @{HOME}/@{XDG_DOWNLOAD_DIR}/*	rwl,
   owner "@{HOME}/My Downloads/" 	r,
   owner "@{HOME}/My Downloads/**" 	rwl,

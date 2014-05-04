@@ -3,7 +3,7 @@
   #
   # Plugins/helpers
   #
-  @{PROC}/[0-9]*/fd/ r,
+  @{PROC}/@{pid}/fd/ r,
   /usr/lib/** rm,
   /bin/bash ixr,
   /bin/dash ixr,

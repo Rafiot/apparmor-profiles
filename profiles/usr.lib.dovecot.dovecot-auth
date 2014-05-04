@@ -1,6 +1,17 @@
-# Author: Kees Cook <kees@ubuntu.com>
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2009-2013 Canonical Ltd.
+#    Copyright (C) 2013 Christian Boltz
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+# vim: ft=apparmor
 
 #include <tunables/global>
+
 /usr/lib/dovecot/dovecot-auth flags=(complain) {
   #include <abstractions/authentication>
   #include <abstractions/base>
@@ -11,7 +22,7 @@
   capability chown,
   capability dac_override,
 
-  @{PROC}/[0-9]*/mounts r,
+  @{PROC}/@{pid}/mounts r,
   /usr/lib/dovecot/dovecot-auth mr,
   /{,var/}run/dovecot/** rw,
   # required for postfix+dovecot integration

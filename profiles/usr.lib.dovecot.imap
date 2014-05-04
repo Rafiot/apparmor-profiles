@@ -1,6 +1,18 @@
-# Author: Kees Cook <kees@ubuntu.com>
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2009-2010 Canonical Ltd.
+#    Copyright (C) 2011-2013 Christian Boltz
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+# vim: ft=apparmor
 
 #include <tunables/global>
+#include <tunables/dovecot>
+
 /usr/lib/dovecot/imap flags=(complain) {
   #include <abstractions/base>
   #include <abstractions/nameservice>
@@ -8,18 +20,11 @@
   capability setgid,
   capability setuid,
 
-  @{HOME} r,
-  @{HOME}/Maildir/ rw,
-  @{HOME}/Maildir/** klrw,
-  @{HOME}/Mail/ rw,
-  @{HOME}/Mail/* klrw,
-  @{HOME}/Mail/.imap/** klrw,
-  @{HOME}/mail/ rw,
-  @{HOME}/mail/* klrw,
-  @{HOME}/mail/.imap/** klrw,
+  @{DOVECOT_MAILSTORE}/ rw,
+  @{DOVECOT_MAILSTORE}/** rwkl,
+
+  @{HOME} r, # ???
   /usr/lib/dovecot/imap mr,
-  /var/mail/* klrw,
-  /var/spool/mail/* klrw,
 
   # Site-specific additions and overrides. See local/README for details.
   #include <local/usr.lib.dovecot.imap>

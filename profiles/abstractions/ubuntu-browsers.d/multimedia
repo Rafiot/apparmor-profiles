@@ -6,7 +6,7 @@
   #include <abstractions/X>
 
   # Pulseaudio
-  /usr/bin/pulseaudio ixr,
+  /usr/bin/pulseaudio Pixr,
 
   # Image viewers
   /usr/bin/eog Cxr -> sanitized_helper,
@@ -50,11 +50,8 @@
   /opt/google/talkplugin/GoogleTalkPlugin ixr,
   owner @{HOME}/.config/google-googletalkplugin/** rw,
 
-  # If we allow the above, nvidia based systems will also need these
-  /dev/nvidiactl rw,
-  /dev/nvidia0 rw,
-  @{PROC}/interrupts r,
-  /etc/vdpau_wrapper.cfg r,
+  # If we allow the above, nvidia based systems will also need this
+  #include <abstractions/nvidia>
 
   # Virus scanners
   /usr/bin/clamscan Cx -> sanitized_helper,

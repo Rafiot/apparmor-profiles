@@ -17,7 +17,7 @@
     /etc/lsb-release r,
     /etc/mtab r,
     /etc/phpsysinfo/config.php r,
-    /proc/** r,
+    @{PROC}/** r,
     /sys/bus/pci/devices/ r,
     /sys/devices/** r,
     /usr/bin/apt-cache ixr,

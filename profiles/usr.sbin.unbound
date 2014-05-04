@@ -1,7 +1,7 @@
 # Last Modified: Sun Oct 20 14:15:15 2013
 #include <tunables/global>
 
-/usr/sbin/unbound flags=(complain) {
+/usr/sbin/unbound {
   #include <abstractions/base>
   #include <abstractions/nameservice>
   #include <abstractions/openssl>

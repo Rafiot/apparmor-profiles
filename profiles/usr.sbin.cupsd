@@ -55,6 +55,7 @@
   /dev/parport* rw,
   /etc/cups/ rw,
   /etc/cups/** rw,
+  /etc/cups/interfaces/* ixrw,
   /etc/foomatic/* r,
   /etc/gai.conf r,
   /etc/papersize r,

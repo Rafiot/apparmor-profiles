@@ -16,6 +16,8 @@
 
     /usr/share/glib-*/schemas/   r,
     /usr/share/glib-*/schemas/** r,
+    /usr/local/share/glib-*/schemas/   r,
+    /usr/local/share/glib-*/schemas/** r,
     /usr/share/telepathy/   r,
     /usr/share/telepathy/** r,
     /usr/lib/mission-control-plugins.*/      r,
@@ -29,7 +31,10 @@
     owner @{HOME}/.mission-control/      rw,
     owner @{HOME}/.mission-control/**    rw,
     owner @{HOME}/.cache/.mc_connections rw,
+    owner @{HOME}/.cache/telepathy/avatars/ rw,
+    owner @{HOME}/.cache/telepathy/avatars/** rwk,
     owner @{HOME}/.{cache,config}/dconf/     w,
+    owner /{,var/}run/user/[0-9]*/           w,
     owner /{,var/}run/user/*/dconf/          w,
     owner @{HOME}/.{cache,config}/dconf/user rw,
     owner /{,var/}run/user/*/dconf/user      rw,
@@ -65,6 +70,10 @@
 
     # LP: #1217618
     capability sys_ptrace,
+
+    # telepathy-ofono needs to store a database for tracking pending messages
+    owner @{HOME}/.local/share/telepathy-ofono/  rw,
+    owner @{HOME}/.local/share/telepathy-ofono/* rwk,
 
     # Site-specific additions and overrides. See local/README for details.
     # Please note that accesses in local/usr.lib.telepathy are also applied to
@@ -109,6 +118,8 @@
 
     /usr/share/glib-*/schemas/   r,
     /usr/share/glib-*/schemas/** r,
+    /usr/local/share/glib-*/schemas/   r,
+    /usr/local/share/glib-*/schemas/** r,
     /etc/purple/prefs.xml        r,
     /usr/share/purple/           r,
     /usr/share/purple/**         r,
@@ -164,6 +175,7 @@
     profile pxgsettings {
       #include <abstractions/gnome>
       /usr/share/glib-*/schemas/** r,
+      /usr/local/share/glib-*/schemas/** r,
       owner @{HOME}/.config/dconf/user r,
       owner /run/user/*/dconf/     w,
       owner /run/user/*/dconf/user rw,

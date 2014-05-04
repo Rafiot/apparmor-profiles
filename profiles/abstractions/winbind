@@ -13,7 +13,9 @@
   /tmp/.winbindd/pipe  rw,
   /var/{lib,run}/samba/winbindd_privileged/pipe rw,
   /etc/samba/smb.conf         r,
+  /etc/samba/dhcp.conf        r,
   /usr/lib*/samba/valid.dat   r,
   /usr/lib*/samba/upcase.dat  r,
   /usr/lib*/samba/lowcase.dat r,
+  /usr/share/samba/codepages/{lowcase,upcase,valid}.dat r,
 

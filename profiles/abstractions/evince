@@ -48,6 +48,7 @@
   /usr/lib/p7zip/7za ixr,
   /usr/bin/zipnote ixr,
   /bin/tar ixr,
+  /usr/bin/xz ixr,
 
   # allow read access to anything in /usr/share, for plugins and input methods
   /usr/local/share/** r,
@@ -76,6 +77,7 @@
   /**.[gG][zZ]         r,
   /**.[bB][zZ]2        r,
   /**.[cC][bB][rRzZ7]  r,
+  /**.[xX][zZ]         r,
 
   # Use abstractions/private-files instead of abstractions/private-files-strict
   # and add the sensitive files manually to work around LP: #451422. The goal

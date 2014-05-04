@@ -10,28 +10,28 @@
 #
 # ------------------------------------------------------------------
 
-  /usr/lib{,32,64}/python2.[4567]/**.{pyc,so}           mr,
-  /usr/lib{,32,64}/python2.[4567]/**.{egg,py,pth}       r,
-  /usr/lib{,32,64}/python2.[4567]/{site,dist}-packages/ r,
+  /usr/lib{,32,64}/python{2,3}.[34567]/**.{pyc,so}           mr,
+  /usr/lib{,32,64}/python{2,3}.[34567]/**.{egg,py,pth}       r,
+  /usr/lib{,32,64}/python{2,3}.[34567]/{site,dist}-packages/ r,
+  /usr/lib{,32,64}/python3.[234]/lib-dynload/*.so            mr,
 
-  /usr/local/lib{,32,64}/python2.[4567]/**.{pyc,so}           mr,
-  /usr/local/lib{,32,64}/python2.[4567]/**.{egg,py,pth}       r,
-  /usr/local/lib{,32,64}/python2.[4567]/{site,dist}-packages/ r,
+  /usr/local/lib{,32,64}/python{2,3}.[34567]/**.{pyc,so}           mr,
+  /usr/local/lib{,32,64}/python{2,3}.[34567]/**.{egg,py,pth}       r,
+  /usr/local/lib{,32,64}/python{2,3}.[34567]/{site,dist}-packages/ r,
+  /usr/local/lib{,32,64}/python3.[234]/lib-dynload/*.so            mr,
 
   # Site-wide configuration
-  /etc/python2.[4567]/** r,
+  /etc/python{2,3}.[34567]/** r,
 
   # shared python paths
   /usr/share/{pyshared,pycentral,python-support}/**      r,
   /{var,usr}/lib/{pyshared,pycentral,python-support}/**  r,
   /usr/lib/{pyshared,pycentral,python-support}/**.so     mr,
   /var/lib/{pyshared,pycentral,python-support}/**.pyc    mr,
+  /usr/lib/python3/dist-packages/**.so                   mr,
 
   # wx paths
   /usr/lib/wx/python/*.pth r,
 
   # python build configuration and headers
   /usr/include/python{2,3}.[0-7]*/pyconfig.h r,
-
-  # python setup script used by apport
-  /etc/python{2,3}.[0-7]*/sitecustomize.py r,

@@ -21,6 +21,7 @@
   /etc/gtk/*                      r,
   /usr/lib{,32,64}/gtk/**         mr,
   /usr/lib/@{multiarch}/gtk/**    mr,
+  /usr/share/themes/              r,
   /usr/share/themes/**            r,
 
   # for gnome 1 applications
@@ -38,24 +39,24 @@
   /usr/lib/@{multiarch}/gdk-pixbuf-*/** mr,
 
   # per-user gtk configuration
-  @{HOME}/.gnome/Gnome            r,
-  @{HOME}/.gtk                    r,
-  @{HOME}/.gtkrc                  r,
-  @{HOME}/.gtkrc-2.0              r,
-  @{HOME}/.gtk-bookmarks          r,
-  @{HOME}/.themes/                r,
-  @{HOME}/.themes/**              r,
+  owner @{HOME}/.gnome/Gnome            r,
+  owner @{HOME}/.gtk                    r,
+  owner @{HOME}/.gtkrc                  r,
+  owner @{HOME}/.gtkrc-2.0              r,
+  owner @{HOME}/.gtk-bookmarks          r,
+  owner @{HOME}/.themes/                r,
+  owner @{HOME}/.themes/**              r,
 
   # for gtk file dialog
-  @{HOME}/.config/gtk-2.0/**                    r,
-  @{HOME}/.config/gtk-2.0/gtkfilechooser.ini*   rw,
+  owner @{HOME}/.config/gtk-2.0/**                  r,
+  owner @{HOME}/.config/gtk-2.0/gtkfilechooser.ini* rw,
 
   # from evolution-mail
-  @{HOME}/.gconfd/lock/*                        r,
-  @{HOME}/.gnome/application-info               r,
+  owner @{HOME}/.gconfd/lock/*                      r,
+  owner @{HOME}/.gnome/application-info             r,
 
   # per-user font business
-  @{HOME}/.fonts.cache-*          rwl,
+  owner @{HOME}/.fonts.cache-*    rwl,
 
   # icon caches
   /var/cache/**/icon-theme.cache  r,
@@ -70,7 +71,7 @@
   # gvfs
   /usr/share/gvfs/remote-volume-monitors/  r,
   /usr/share/gvfs/remote-volume-monitors/* r,
-  @{PROC}/*/mounts                 r,
+  @{PROC}/@{pid}/mounts                    r,
 
   # printing
   /etc/papersize                   r,
@@ -82,4 +83,5 @@
 
   # mime-types
   /etc/gnome/defaults.list r,
+  /usr/share/gnome/applications/ r,
   /usr/share/gnome/applications/mimeinfo.cache r,

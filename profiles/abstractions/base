@@ -90,7 +90,7 @@
   /sys/devices/system/cpu/online r,
 
   # glibc's *printf protections read the maps file
-  @{PROC}/*/maps                 r,
+  @{PROC}/@{pid}/maps            r,
 
   # libgcrypt reads some flags from /proc
   @{PROC}/sys/crypto/*           r,
@@ -103,6 +103,24 @@
 
   # glibc malloc (man 5 proc)
   @{PROC}/sys/vm/overcommit_memory r,
+
+  # Allow other processes to read our /proc entries, futexes, perf tracing and
+  # kcmp for now
+  ptrace (readby),
+
+  # Allow other processes to trace us by default (they will need 'trace' in
+  # the first place). Administrators can override with:
+  #   deny ptrace (tracedby) ...
+  ptrace (tracedby),
+
+  # Allow unconfined processes to send us signals by default
+  signal (receive) peer=unconfined,
+
+  # Allow us to signal ourselves
+  signal peer=@{profile_name},
+
+  # Checking for PID existence is quite common so add it by default for now
+  signal (receive, send) set=("exists"),
 
   # Workaround https://launchpad.net/bugs/359338 until upstream handles stacked
   # filesystems generally. This does not appreciably decrease security with

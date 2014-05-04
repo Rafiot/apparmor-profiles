@@ -20,6 +20,7 @@
   # File managers
   /usr/bin/nautilus Cxr -> sanitized_helper,
   /usr/bin/{t,T}hunar Cxr -> sanitized_helper,
+  /usr/bin/dolphin Cxr -> sanitized_helper,
 
   # Themes
   /usr/bin/gnome-appearance-properties Cxr -> sanitized_helper,

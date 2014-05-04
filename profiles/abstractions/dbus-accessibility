@@ -9,4 +9,8 @@
 #
 # ------------------------------------------------------------------
 
+  # This abstraction grants full accessibility bus access. Consider using the
+  # dbus-accessibility-strict abstraction for fine-grained bus mediation.
+
+  #include <abstractions/dbus-accessibility-strict>
   dbus bus=accessibility,

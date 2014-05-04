@@ -8,6 +8,10 @@
 # etc). Note that this profile intentionally omits chromium-browser.
 
   #include <abstractions/authentication>
+  #include <abstractions/cups-client>
+  #include <abstractions/dbus>
+  #include <abstractions/dbus-session>
+  #include <abstractions/dbus-accessibility>
   #include <abstractions/nameservice>
   #include <abstractions/wutmp>
   /etc/compizconfig/config rw, # bug in compiz https://launchpad.net/bugs/697678
@@ -43,10 +47,14 @@
   owner @{PROC}/** rm,
   # needed for gnome-keyring-daemon
   @{PROC}/*/status r,
+  # needed for bamfdaemon and utilities such as ps and killall
+  @{PROC}/*/stat r,
   /sbin/ r,
   /sbin/** rmixk,
   /sys/ r,
   /sys/** rm,
+  # needed for confined trusted helpers, such as dbus-daemon
+  /sys/kernel/security/apparmor/.access rw,
   /tmp/ rw,
   owner /tmp/** rwlkmix,
   /usr/ r,
@@ -64,6 +72,12 @@
   owner /{,var/}run/user/*/** rw,
 
   capability ipc_lock,
+
+  # allow processes in the guest session to signal and ptrace each other
+  signal peer=@{profile_name},
+  ptrace peer=@{profile_name},
+  # needed when logging out of the guest session
+  signal (receive) peer=unconfined,
 
   # silence warnings for stuff that we really don't want to grant
   deny capability dac_override,

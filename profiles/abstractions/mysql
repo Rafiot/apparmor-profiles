@@ -1,6 +1,7 @@
 # ------------------------------------------------------------------
 #
 #    Copyright (C) 2002-2006 Novell/SUSE
+#    Copyright (C) 2013 Christian Boltz
 #
 #    This program is free software; you can redistribute it and/or
 #    modify it under the terms of version 2 of the GNU General Public
@@ -9,5 +10,6 @@
 # ------------------------------------------------------------------
 
    /var/lib/mysql/mysql.sock rw,
-   /usr/share/mysql/charsets/ r,
-   /usr/share/mysql/charsets/*.xml r,
+   /{var/,}run/mysql/mysql.sock rw,
+   /usr/share/{mysql,mysql-community-server,mariadb}/charsets/ r,
+   /usr/share/{mysql,mysql-community-server,mariadb}/charsets/*.xml r,

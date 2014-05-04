@@ -1,7 +1,7 @@
 # vim:syntax=apparmor
 # ------------------------------------------------------------------
 #
-#    Copyright (C) 2009-2010 Canonical Ltd.
+#    Copyright (C) 2009-2013 Canonical Ltd.
 #
 #    This program is free software; you can redistribute it and/or
 #    modify it under the terms of version 2 of the GNU General Public
@@ -9,6 +9,8 @@
 #
 # ------------------------------------------------------------------
 
-  # System socket. Be careful when including this abstraction.
-  /{,var/}run/dbus/system_bus_socket rw,
+  # This abstraction grants full system bus access. Consider using the
+  # dbus-strict abstraction for fine-grained bus mediation.
+
+  #include <abstractions/dbus-strict>
   dbus bus=system,

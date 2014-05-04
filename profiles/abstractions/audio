@@ -40,12 +40,12 @@
 /usr/share/alsa/** r,
 /usr/share/sounds/** r,
 
-@{HOME}/.esd_auth  r,
-@{HOME}/.asoundrc  r,
+owner @{HOME}/.esd_auth r,
+owner @{HOME}/.asoundrc r,
 /etc/esound/esd.conf r,
 
 # libcanberra
-@{HOME}/.cache/event-sound-cache.* rwk,
+owner @{HOME}/.cache/event-sound-cache.* rwk,
 
 # pulse
 /etc/pulse/ r,

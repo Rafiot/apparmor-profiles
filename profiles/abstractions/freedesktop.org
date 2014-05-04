@@ -30,6 +30,7 @@
   owner @{HOME}/.recently-used.xbel*    rw,
   owner @{HOME}/.local/share/recently-used.xbel* rw,
   owner @{HOME}/.config/user-dirs.dirs  r,
+  owner @{HOME}/.local/share/applications/               r,
   owner @{HOME}/.local/share/applications/*.desktop      r,
   owner @{HOME}/.local/share/applications/defaults.list  r,
   owner @{HOME}/.local/share/applications/mimeapps.list  r,

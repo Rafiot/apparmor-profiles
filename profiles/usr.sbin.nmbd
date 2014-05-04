@@ -1,6 +1,6 @@
 #include <tunables/global>
 
-/usr/sbin/nmbd {
+/usr/sbin/nmbd flags=(complain) {
   #include <abstractions/base>
   #include <abstractions/nameservice>
   #include <abstractions/samba>
@@ -11,7 +11,9 @@
 
   /usr/sbin/nmbd mr,
 
+  /var/cache/samba/gencache.tdb rwk,
   /var/{cache,lib}/samba/browse.dat* rw,
+  /var/{cache,lib}/samba/gencache.dat rw,
   /var/{cache,lib}/samba/wins.dat* rw,
   /var/{cache,lib}/samba/smb_krb5/ rw,
   /var/{cache,lib}/samba/smb_krb5/krb5.conf* rw,

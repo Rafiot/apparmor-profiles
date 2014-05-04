@@ -1,4 +1,3 @@
-# Last Modified: Thu Oct 17 19:26:36 2013
 # ------------------------------------------------------------------
 #
 #    Copyright (C) 2009 John Dong <jdong@ubuntu.com>
@@ -10,46 +9,53 @@
 #
 # ------------------------------------------------------------------
 
-@{TFTP_DIR} = /srv/tftpboot /var/tftp
+@{TFTP_DIR}=/var/tftp /srv/tftpboot
 
 #include <tunables/global>
-
 /usr/sbin/dnsmasq {
   #include <abstractions/base>
+  #include <abstractions/dbus>
   #include <abstractions/nameservice>
-  #include <local/usr.sbin.dnsmasq>
 
-  capability dac_override,
-  capability net_admin,
   capability net_bind_service,
-  capability net_raw,
   capability setgid,
   capability setuid,
-
+  capability dac_override,
+  capability net_admin,         # for DHCP server
+  capability net_raw,           # for DHCP server ping checks
   network inet raw,
 
-
-  /etc/NetworkManager/dnsmasq.d/ r,
   /etc/dnsmasq.conf r,
   /etc/dnsmasq.d/ r,
   /etc/dnsmasq.d/* r,
   /etc/ethers r,
-  /run/NetworkManager/dnsmasq.conf r,
-  /run/NetworkManager/dnsmasq.pid w,
+
   /usr/sbin/dnsmasq mr,
-  /var/lib/libvirt/dnsmasq/ r,
-  /var/lib/libvirt/dnsmasq/*.hostsfile r,
-  /var/lib/libvirt/dnsmasq/*.leases rw,
-  /var/lib/misc/dnsmasq.leases rw,
+
   /{,var/}run/*dnsmasq*.pid w,
   /{,var/}run/dnsmasq-forwarders.conf r,
   /{,var/}run/dnsmasq/ r,
   /{,var/}run/dnsmasq/* rw,
-  /{,var/}run/libvirt/network/ r,
-  /{,var/}run/libvirt/network/*.pid rw,
-  /{,var/}run/nm-dns-dnsmasq.conf r,
-  /{,var/}run/sendsigs.omit.d/*dnsmasq.pid w,
+
+  /var/lib/misc/dnsmasq.leases rw, # Required only for DHCP server usage
+
+  # for the read-only TFTP server
   @{TFTP_DIR}/ r,
   @{TFTP_DIR}/** r,
 
+  # libvirt lease and hosts files for dnsmasq
+  /var/lib/libvirt/dnsmasq/            r,
+  /var/lib/libvirt/dnsmasq/*.leases rw,
+  /var/lib/libvirt/dnsmasq/*.hostsfile r,
+
+  # libvirt pid files for dnsmasq
+  /{,var/}run/libvirt/network/      r,
+  /{,var/}run/libvirt/network/*.pid rw,
+
+  # NetworkManager integration
+  /{,var/}run/nm-dns-dnsmasq.conf r,
+  /{,var/}run/sendsigs.omit.d/*dnsmasq.pid w,
+
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/usr.sbin.dnsmasq>
 }

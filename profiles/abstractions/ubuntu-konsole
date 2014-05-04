@@ -6,9 +6,9 @@
   #include <abstractions/consoles>
   #include <abstractions/kde>
   capability sys_ptrace,
-  @{PROC}/[0-9]*/status r,
-  @{PROC}/[0-9]*/stat r,
-  @{PROC}/[0-9]*/cmdline r,
+  @{PROC}/@{pid}/status r,
+  @{PROC}/@{pid}/stat r,
+  @{PROC}/@{pid}/cmdline r,
   /{,var/}run/utmp r,
   /dev/ptmx rw,
 

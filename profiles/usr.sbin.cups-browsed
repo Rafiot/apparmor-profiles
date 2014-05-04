@@ -1,0 +1,16 @@
+#include <tunables/global>
+
+/usr/sbin/cups-browsed {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/cups-client>
+  #include <abstractions/dbus>
+  #include <abstractions/p11-kit>
+
+  /etc/cups/cups-browsed.conf r,
+  /{var/,}run/cups/certs/* r,
+  /tmp/** rw,
+
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/usr.sbin.cups-browsed>
+}

@@ -1,7 +1,7 @@
 # Last Modified: Wed Oct 16 14:48:02 2013
 #include <tunables/global>
 
-/opt/spotify/spotify-client/spotify {
+/opt/spotify/spotify-client/spotify flags=(complain) {
   #include <abstractions/audio>
   #include <abstractions/base>
   #include <abstractions/fonts>
@@ -34,7 +34,7 @@
   /{run,dev}/shm/pulse-shm* rw,
 
 
-  profile /bin/dash {
+  profile /bin/dash flags=(complain) {
     #include <abstractions/base>
 
 
@@ -43,7 +43,7 @@
 
   }
 
-  profile /usr/bin/kde4-config {
+  profile /usr/bin/kde4-config flags=(complain) {
     #include <abstractions/base>
 
 

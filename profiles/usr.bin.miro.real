@@ -1,4 +1,4 @@
-# Last Modified: Fri Oct 18 00:44:04 2013
+# Last Modified: Thu Nov  7 22:48:51 2013
 #include <tunables/global>
 
 /usr/bin/miro.real {
@@ -14,6 +14,7 @@
   #include <abstractions/private-files-strict>
   #include <abstractions/python>
   #include <abstractions/user-tmp>
+  #include <abstractions/dbus-session>
 
   network inet stream,
 
@@ -28,6 +29,7 @@
 
   /bin/dash rCx,
   /bin/uname cx,
+  /home/*/.kde/share/config/* r,
   /sbin/ldconfig cx,
   /usr/bin/kde4-config rPx,
   owner /{run,dev}/shm/pulse-shm* wk,
@@ -54,6 +56,7 @@
 
   profile /bin/dash {
     #include <abstractions/base>
+
 
 
     /bin/dash mr,
