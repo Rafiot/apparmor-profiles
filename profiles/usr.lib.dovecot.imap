@@ -13,7 +13,7 @@
 #include <tunables/global>
 #include <tunables/dovecot>
 
-/usr/lib/dovecot/imap flags=(complain) {
+/usr/lib/dovecot/imap {
   #include <abstractions/base>
   #include <abstractions/nameservice>
 

@@ -1,3 +1,4 @@
+# Last Modified: Sun Apr  6 16:20:25 2014
 # ------------------------------------------------------------------
 #
 #    Copyright (C) 2009 John Dong <jdong@ubuntu.com>
@@ -9,25 +10,27 @@
 #
 # ------------------------------------------------------------------
 
-@{TFTP_DIR}=/var/tftp /srv/tftpboot
+@{TFTP_DIR} = /srv/tftpboot /var/tftp
 
 #include <tunables/global>
-/usr/sbin/dnsmasq flags=(complain) {
+
+/usr/sbin/dnsmasq {
   #include <abstractions/base>
   #include <abstractions/dbus>
   #include <abstractions/nameservice>
+  #include <local/usr.sbin.dnsmasq>
 
+  capability dac_override,
+  capability net_admin,
   capability net_bind_service,
+  capability net_raw,
   capability setgid,
   capability setuid,
-  capability dac_override,
-  capability net_admin,         # for DHCP server
-  capability net_raw,           # for DHCP server ping checks
+
   network inet raw,
 
   signal (receive) peer=/usr/sbin/libvirtd,
   ptrace (readby) peer=/usr/sbin/libvirtd,
-
   /etc/dnsmasq.conf r,
   /etc/dnsmasq.d/ r,
   /etc/dnsmasq.d/* r,
@@ -36,7 +39,11 @@
   /etc/NetworkManager/dnsmasq.d/* r,
 
   /usr/sbin/dnsmasq mr,
-
+  /var/lib/libvirt/dnsmasq/ r,
+  /var/lib/libvirt/dnsmasq/*.hostsfile r,
+  /var/lib/libvirt/dnsmasq/*.leases rw,
+  /var/lib/libvirt/dnsmasq/default.conf r,
+  /var/lib/misc/dnsmasq.leases rw,
   /{,var/}run/*dnsmasq*.pid w,
   /{,var/}run/dnsmasq-forwarders.conf r,
   /{,var/}run/dnsmasq/ r,
@@ -63,6 +70,4 @@
   /{,var/}run/NetworkManager/dnsmasq.conf r,
   /{,var/}run/NetworkManager/dnsmasq.pid w,
 
-  # Site-specific additions and overrides. See local/README for details.
-  #include <local/usr.sbin.dnsmasq>
 }

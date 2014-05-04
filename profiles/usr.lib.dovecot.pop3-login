@@ -12,7 +12,7 @@
 
 #include <tunables/global>
 
-/usr/lib/dovecot/pop3-login flags=(complain) {
+/usr/lib/dovecot/pop3-login {
   #include <abstractions/base>
   #include <abstractions/nameservice>
   #include <abstractions/ssl_certs>

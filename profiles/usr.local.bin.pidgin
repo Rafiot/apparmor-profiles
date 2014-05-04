@@ -1,4 +1,4 @@
-# Last Modified: Sun Oct 20 23:59:18 2013
+# Last Modified: Wed Nov  6 18:12:45 2013
 #include <tunables/global>
 
 /usr/local/bin/pidgin {
@@ -26,6 +26,7 @@
   deny /run/user/*/dconf/user rw,
   deny /usr/bin/kde-open x,
   deny /usr/bin/kde4-config r,
+  deny /usr/bin/pidgin r,
   deny /usr/lib/purple-2/** mr,
   deny /usr/share/kubuntu-default-settings/** r,
   deny @{HOME}/.bash* rw,
@@ -38,6 +39,7 @@
   deny @{HOME}/.gstreamer*/ rw,
   deny @{HOME}/.gstreamer*/** rw,
   deny @{HOME}/.kde/** r,
+  deny @{HOME}/.kde/share/config/kdeglobals r,
   deny @{HOME}/.profile rw,
   deny @{HOME}/.pulse-cookie rwk,
   deny @{HOME}/.pulse/ rw,
@@ -47,7 +49,6 @@
 
   /etc/purple/prefs.xml r,
   /usr/bin/gconftool-2 rix,
-  /usr/bin/pidgin r,
   /usr/lib/libvisual-*/**.so mr,
   /usr/lib/x86_64-linux-gnu/gconv/UTF-*.so mr,
   /usr/local/lib/libpurple.so.* mr,

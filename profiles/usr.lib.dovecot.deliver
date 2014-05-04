@@ -14,7 +14,7 @@
 #include <tunables/global>
 #include <tunables/dovecot>
 
-/usr/lib/dovecot/deliver flags=(complain) {
+/usr/lib/dovecot/deliver {
   #include <abstractions/base>
   #include <abstractions/nameservice>
 

@@ -22,6 +22,7 @@
   #include <abstractions/ibus>
   #include <abstractions/nameservice>
   #include <abstractions/p11-kit>
+  #include <abstractions/private-files>
 
   # Addons
   #include <abstractions/ubuntu-browsers.d/firefox>

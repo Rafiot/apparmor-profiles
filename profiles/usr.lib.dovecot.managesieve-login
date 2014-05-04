@@ -12,7 +12,7 @@
 # vim: ft=apparmor
 
 #include <tunables/global>
-/usr/lib/dovecot/managesieve-login flags=(complain) {
+/usr/lib/dovecot/managesieve-login {
   #include <abstractions/base>
   #include <abstractions/ssl_certs>
   #include <abstractions/ssl_keys>

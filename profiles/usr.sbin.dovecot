@@ -12,7 +12,7 @@
 
 #include <tunables/global>
 
-/usr/sbin/dovecot flags=(complain) {
+/usr/sbin/dovecot {
   #include <abstractions/authentication>
   #include <abstractions/base>
   #include <abstractions/mysql>

@@ -5,7 +5,7 @@
   #include <abstractions/base>
   #include <abstractions/nameservice>
   #include <abstractions/python>
-  
+
   capability sys_ptrace,
 
   #/bin/{dash,grep,ps} rix,

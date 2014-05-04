@@ -13,7 +13,7 @@
 #include <tunables/global>
 #include <tunables/dovecot>
 
-/usr/lib/dovecot/pop3 flags=(complain) {
+/usr/lib/dovecot/pop3 {
   #include <abstractions/base>
   #include <abstractions/nameservice>
 
