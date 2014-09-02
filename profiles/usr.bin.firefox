@@ -40,6 +40,7 @@
   /etc/mime.types r,
   /etc/mailcap r,
   /etc/xdg/*buntu/applications/defaults.list    r, # for all derivatives
+  /etc/xfce4/defaults.list r,
   /usr/share/xubuntu/applications/defaults.list r,
   owner @{HOME}/.local/share/applications/defaults.list r,
   owner @{HOME}/.local/share/applications/mimeapps.list r,
